@@ -16,6 +16,20 @@
 
 <MediaCodecs>
     <Encoders>
+        <MediaCodec name="OMX.MARVELL.VIDEO.VMETAENCODER" >
+            <Type name="video/mp4v-es" />
+            <Type name="video/3gpp" />
+            <Type name="video/avc" />
+            <Quirk name="avoid-memcpy-input-recording-frames"/>
+        </MediaCodec>
+        <MediaCodec name="OMX.MARVELL.VIDEO.MPEG4ASPENCODER" type="video/mp4v-es" />
+        <MediaCodec name="OMX.MARVELL.VIDEO.H263ENCODER" type="video/3gpp" />
+        <MediaCodec name="OMX.MARVELL.VIDEO.H264ENCODER" type="video/avc" />
+
+        <MediaCodec name="OMX.MARVELL.AUDIO.AMRNBENCODER" type="audio/3gpp" />
+        <MediaCodec name="OMX.MARVELL.AUDIO.AMRWBENCODER" type="audio/amr-wb" />
+        <MediaCodec name="OMX.MARVELL.AUDIO.AACENCODER" type="audio/mp4a-latm" />
+
         <MediaCodec name="OMX.google.amrnb.encoder" type="audio/3gpp" />
         <MediaCodec name="OMX.google.aac.encoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.amrwb.encoder" type="audio/amr-wb" />
@@ -26,11 +40,25 @@
         <MediaCodec name="OMX.google.mpeg4.encoder" type="video/mp4v-es" />
     </Encoders>
     <Decoders>
+        <MediaCodec name="OMX.MARVELL.VIDEO.VMETADECODER" >
+            <Type name="video/mp4v-es" />
+            <Type name="video/3gpp" />
+            <Type name="video/avc" />
+        </MediaCodec>
+        <MediaCodec name="OMX.MARVELL.VIDEO.MPEG4ASPDECODER" type="video/mp4v-es" />
+        <MediaCodec name="OMX.MARVELL.VIDEO.H263DECODER" type="video/3gpp" />
+        <MediaCodec name="OMX.MARVELL.VIDEO.H264DECODER" type="video/avc" />
+
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
         <MediaCodec name="OMX.google.gsm.decoder" type="audio/gsm" />
+        <MediaCodec name="OMX.MARVELL.AUDIO.MP3DECODER" type="audio/mpeg" />
         <MediaCodec name="OMX.google.mp3.decoder" type="audio/mpeg" />
+        <MediaCodec name="OMX.MARVELL.AUDIO.AMRNBDECODER" type="audio/3gpp" />
         <MediaCodec name="OMX.google.amrnb.decoder" type="audio/3gpp" />
+        <MediaCodec name="OMX.MARVELL.AUDIO.AMRWBDECODER" type="audio/amr-wb" />
         <MediaCodec name="OMX.google.amrwb.decoder" type="audio/amr-wb" />
+
+        <MediaCodec name="OMX.MARVELL.AUDIO.AACDECODER" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.aac.decoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.google.g711.alaw.decoder" type="audio/g711-alaw" />
         <MediaCodec name="OMX.google.g711.mlaw.decoder" type="audio/g711-mlaw" />

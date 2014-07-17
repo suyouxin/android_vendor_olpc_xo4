@@ -1,0 +1,20 @@
+# Android fstab file.
+#<src>                                                  <mnt_point>         <type>    <mnt_flags and options>                       <fs_mgr_flags>
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+/dev/block/mmcblk0p1      /boot               ext4    defaults                                                                     defaults
+/dev/block/mmcblk0p2      /mnt/sugar          ext4    rw,noatime                                                                   wait
+/mnt/sugar/android        /data               ext4    rw,noatime,nosuid,nodev,bind,barrier=1,data=ordered,nomblk_io_submit,errors=panic  wait
+
+/dev/block/mmcblk0p3      /system         ext4    ro,barrier=1                                                                 wait
+# /dev/block/sda5      /system         ext4    ro,barrier=1                                                                 wait
+/dev/block/mmcblk0p4      /cache          ext4    noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,errors=panic    wait,check
+#/dev/block/mmcblk0p2      /mnt/sugar      ext4    noatime,nosuid,nodev,barrier=1,data=ordered,nomblk_io_submit,errors=panic    wait,check
+#/mnt/sugar/android        /data           ext4    noatime,nosuid,nodev,bind,barrier=1,data=ordered,nomblk_io_submit,errors=panic    wait
+#/mnt/sugar/   /data           ext4    noatime,nosuid,nodev,bind,barrier=1,data=ordered,nomblk_io_submit,errors=panic    wait,check
+
+/devices/d4208000.usb/usb1/1-1/1-1.3/1-1.3:1.0  /storage/udisk1  vfat    defaults                                      voldmanaged=udisk1:auto,noemulatedsd
+/devices/d4208000.usb/usb1/1-1/1-1.2/1-1.2:1.0  /storage/udisk2  vfat    defaults                                      voldmanaged=udisk2:auto,noemulatedsd
+/devices/sd.0/d4280000.sdhci/mmc_host/mmc2 /storage/sdcard1  vfat    defaults                                 voldmanaged=sdcard1:auto,noemulatedsd
+
