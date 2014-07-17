@@ -1,0 +1,98 @@
+
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+
+on init
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
+
+    mkdir /storage/sdcard1 0700 root root
+    mkdir /storage/udisk1 0700 root root
+    mkdir /storage/udisk2 0700 root root
+
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+    export SECONDARY_STORAGE /storage/sdcard1
+
+    # Support legacy paths
+    symlink /storage/emulated/legacy /sdcard
+    symlink /storage/emulated/legacy /mnt/sdcard
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
+
+    # for control LCD backlight
+    chown system system /sys/class/backlight/dcon-bl/brightness
+    chown system system /sys/devices/platform/dcon/monochrome
+
+    # for sd8xxx wifi and bluetooth power
+    chown system system /sys/class/rfkill/rfkill0/state
+    chown system system /sys/class/rfkill/rfkill1/state
+
+on fs
+    mount_all ./fstab.xo4
+    setprop ro.crypto.fuse_sdcard true
+
+on post-fs-data
+    mkdir /system/etc/wifi 0770 wifi wifi 
+    chmod 0770 /system/etc/wifi 
+    chmod 0660 /system/etc/wifi/wpa_supplicant.conf 
+    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf 
+
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+# to observe dnsmasq.leases file for dhcp information of soft ap.
+    chown dhcp system /data/misc/dhcp
+
+    chmod 0770 /data/misc/wifi 
+    chmod 0660 /data/misc/wifi/wpa_supplicant.conf 
+    chown wifi wifi /data/misc/wifi 
+    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf 
+# for test
+
+on boot
+# for touchsreen
+    write /sys/module/zforce/parameters/scale_x 2000    
+    write /sys/module/zforce/parameters/scale_y 2000
+    write /sys/module/zforce/parameters/jitter -1
+
+    chmod 06755 /system/xbin/su1 
+
+on property:init.svc.wpa_supplicant=stopped
+    stop dhcpcd
+
+# service wpa_supplicant /system/bin/wpa_supplicant -dd \
+#    -imlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
+#    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
+#    -O/data/misc/wifi/sockets \
+#    -e/data/misc/wifi/entropy.bin -g@android:wpa_mlan0
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -imlan0 -c/data/misc/wifi/wpa_supplicant.conf
+    socket wpa_mlan0 dgram 660 wifi wifi 
+    group system wifi inet 
+    disabled 
+    oneshot 
+
+service dhcpcd_mlan0 /system/bin/dhcpcd -aABDKL
+	class main
+	disabled
+	oneshot
+
+service iprenew_mlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service xo-logcat /system/bin/logcat -f /dev/ttyS2 *:V
+    class core
+    user root
+
+# virtual sdcard daemon running as media_rw (1023)
+service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
+    class late_start
+
