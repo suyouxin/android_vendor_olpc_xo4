@@ -88,9 +88,9 @@ PRODUCT_PACKAGES += \
 
 #firmware wifi/bt  TODO: move it into kernel
 PRODUCT_COPY_FILES += \
-    vendor/marvell/generic/sd8787/wlan_src/mlan.ko:system/lib/modules/mlan.ko \
-    vendor/marvell/generic/sd8787/wlan_src/sd8xxx.ko:system/lib/modules/sd8787.ko \
-    vendor/marvell/generic/sd8787/mbtc_src/mbt8xxx.ko:system/lib/modules/mbt8xxx.ko \
+    vendor/olpc/xo4/modules/mlan.ko:system/lib/modules/mlan.ko \
+    vendor/olpc/xo4/modules/sd8xxx.ko:system/lib/modules/sd8787.ko \
+    vendor/olpc/xo4/modules/mbt8xxx.ko:system/lib/modules/mbt8xxx.ko \
     vendor/olpc/xo4/modules/libertas.ko:system/lib/modules/libertas.ko \
     vendor/olpc/xo4/modules/libertas_sdio.ko:system/lib/modules/libertas_sdio.ko \
 #   vendor/olpc/xo4/modules/galcore.ko:system/lib/modules/galcore.ko 
