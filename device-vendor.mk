@@ -218,11 +218,6 @@ PRODUCT_PACKAGES += \
     PowerSetting \
     libPowerSetting
 
-# displayservice modules
-PRODUCT_PACKAGES += \
-    ionsyx \
-    libion_pxa
- 
 # multimedia modules except gst, include IPP, bmm/pmem, opencore...
 PRODUCT_PACKAGES += \
     libstagefrighthw  \
