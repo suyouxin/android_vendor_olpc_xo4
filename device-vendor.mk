@@ -51,14 +51,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
-# keyboard mapping
-PRODUCT_COPY_FILES += \
-	vendor/olpc/xo4/AT_Translated_Set_2_keyboard.kl:system/usr/keylayout/AT_Translated_Set_2_keyboard.kl \
-    vendor/olpc/xo4/AT_Translated_Set_2_keyboard.kcm:system/usr/keychars/AT_Translated_Set_2_keyboard.kcm \
-    frameworks/base/packages/InputDevices/res/raw/keyboard_layout_olpc_english.kcm:system/usr/keychars/AT_Translated_Set_2_keyboard_en.kcm \
-    frameworks/base/packages/InputDevices/res/raw/keyboard_layout_olpc_spanish.kcm:system/usr/keychars/AT_Translated_Set_2_keyboard_es.kcm \
-	vendor/olpc/xo4/AT_Translated_Set_2_keyboard.idc:system/usr/idc/AT_Translated_Set_2_keyboard.idc
-
 # touch screen configure file
 PRODUCT_COPY_FILES += \
 	vendor/olpc/xo4/zForce_touchscreen.idc:system/usr/idc/zForce_touchscreen.idc 
@@ -232,6 +224,7 @@ $(call inherit-product-if-exists, vendor/marvell/generic/ipplib/ipplib_modules.m
 $(call inherit-product-if-exists, vendor/marvell/generic/phycontmem-lib/modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/gapps/gapps.mk)
+$(call inherit-product-if-exists, vendor/olpc/xo4/keyboard/keyboard.mk)
 # $(call inherit-product-if-exists, vendor/olpc/xo4/etc/etc.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/cpufreqd/cpufreq_modules.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/wfd_platform/wfd_modules.mk)
