@@ -184,44 +184,6 @@ PRODUCT_PACKAGES += \
 	rfcomm \
 	avinfo \
 
-# google framework
-# PRODUCT_PACKAGES += \
-    ChromeBookmarksSyncAdapter \
-    ConfigUpdater \
-    GenieWidget \
-    GmsCore \
-    GoogleBackupTransport \
-    GoogleCalendarSyncAdapter \
-    GoogleContactsSyncAdapter \
-    GoogleEars \
-    GoogleFeedback \
-    GoogleLoginService \
-    GoogleOneTimeInitializer \
-    GooglePartnerSetup \
-    GoogleServicesFramework \
-    GoogleTTS \
-    LatinImeDictionaryPack \
-    Maps \
-    MediaUploader \
-    NetworkLocation \
-    Phonesky \
-    QuickSearchBox \
-    SetupWizard \
-    TalkBack \
-    VoiceSearchStub \
-    Youtube \
-    Chrome \
-#   GooglePlus \
-    Gmail \
-
-# PRODUCT_COPY_FILES += \
-	$(call find-copy-subdir-files,*,$(LOCAL_PATH)/gapps/system/addon.d,system/addon.d) \
-	$(call find-copy-subdir-files,*,$(LOCAL_PATH)/gapps/system/etc,system/etc) \
-	$(call find-copy-subdir-files,*,$(LOCAL_PATH)/gapps/system/framework,system/framework) \
-	$(call find-copy-subdir-files,*,$(LOCAL_PATH)/gapps/system/lib,system/lib) \
-	$(call find-copy-subdir-files,*,$(LOCAL_PATH)/gapps/system/usr,system/usr)
-#	$(call find-copy-subdir-files,*,$(LOCAL_PATH)/gapps/system/tts,system/tts) \
-
 # Morphoss special 
 PRODUCT_PACKAGES += \
     Terminal \
@@ -274,6 +236,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, vendor/marvell/generic/ipplib/ipplib_modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/phycontmem-lib/modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw.mk)
+$(call inherit-product-if-exists, vendor/olpc/xo4/gapps/gapps.mk)
 # $(call inherit-product-if-exists, vendor/olpc/xo4/etc/etc.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/cpufreqd/cpufreq_modules.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/wfd_platform/wfd_modules.mk)
