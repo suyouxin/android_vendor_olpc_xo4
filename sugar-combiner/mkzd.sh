@@ -13,7 +13,7 @@ fi
 
 if [ $RELEASE == true ] ; then
     sudo rm -rf imgs/*
-    sudo cp /home/android/run/out/dist/signed-img.zip imgs/
+    sudo cp ../../../../out/dist/signed-img.zip imgs/
     sudo unzip imgs/signed-img.zip -d imgs/
     cd imgs/
     ../unmkbootimg -i boot.img
@@ -36,10 +36,10 @@ fi
 # E_ an ending offset in bytes
 # D_ a loopback block device name
 
-Z_INPUT=32013o4.zd # sugar install
-I_INPUT=32013o4.img # sugar image
+Z_INPUT=32014o4.zd # sugar install
+I_INPUT=32014o4.img # sugar image
 
-Z_OUTPUT=32013a4.zd
+Z_OUTPUT=32014a4.zd
 
 S_DEVICE=3775 # size of device in megabytes (XO-4 eMMC 4 GB)
 S_SYSTEM=400 # size of system partition in megabytes
