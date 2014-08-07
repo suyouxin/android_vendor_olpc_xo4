@@ -183,18 +183,6 @@ PRODUCT_PACKAGES += \
     AdobeAir \
     XOFiles 
 
-# for uruguay
-# PRODUCT_PACKAGES += \
-    2048 \
-    AdobePdf \
-    Facebook \
-    Gmail \
-    Skype \
-    WPSOffice \
-    TemplerRun \
-    Angrybirds \
-    GooglePlus \
-
 # GPU: alloc
 BOARD_EGL_CFG := vendor/olpc/xo4/egl.cfg
 PRODUCT_PACKAGES += \
@@ -224,6 +212,7 @@ $(call inherit-product-if-exists, vendor/marvell/generic/ipplib/ipplib_modules.m
 $(call inherit-product-if-exists, vendor/marvell/generic/phycontmem-lib/modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/gapps/gapps.mk)
+$(call inherit-product-if-exists, vendor/olpc/xo4/uruguay/uruguay.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/keyboard/keyboard.mk)
 # $(call inherit-product-if-exists, vendor/olpc/xo4/etc/etc.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/cpufreqd/cpufreq_modules.mk)
