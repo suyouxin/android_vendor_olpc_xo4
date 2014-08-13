@@ -78,15 +78,6 @@ PRODUCT_PACKAGES += \
     sfdisk \
     busybox 
 
-#firmware wifi/bt  TODO: move it into kernel
-PRODUCT_COPY_FILES += \
-    vendor/olpc/xo4/modules/mlan.ko:system/lib/modules/mlan.ko \
-    vendor/olpc/xo4/modules/sd8xxx.ko:system/lib/modules/sd8787.ko \
-    vendor/olpc/xo4/modules/mbt8xxx.ko:system/lib/modules/mbt8xxx.ko \
-    vendor/olpc/xo4/modules/libertas.ko:system/lib/modules/libertas.ko \
-    vendor/olpc/xo4/modules/libertas_sdio.ko:system/lib/modules/libertas_sdio.ko \
-#   vendor/olpc/xo4/modules/galcore.ko:system/lib/modules/galcore.ko 
-
 # system property sets
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=5m \
@@ -214,6 +205,7 @@ $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw
 $(call inherit-product-if-exists, vendor/olpc/xo4/gapps/gapps.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/uruguay/uruguay.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/keyboard/keyboard.mk)
+
 # $(call inherit-product-if-exists, vendor/olpc/xo4/etc/etc.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/cpufreqd/cpufreq_modules.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/wfd_platform/wfd_modules.mk)
