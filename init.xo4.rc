@@ -103,6 +103,10 @@ on boot
 on property:service.bootanim.exit=0
     write /sys/devices/platform/dcon/freeze 0
 
+# sync ebook state when bootanim finished
+on property:service.bootanim.exit=1
+    write /sys/devices/0.switches/ebook_state_sync 0
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
