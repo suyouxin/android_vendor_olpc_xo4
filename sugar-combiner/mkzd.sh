@@ -147,15 +147,6 @@ echo "$(basename $0): add sugar"
     $(( $L_ROOT_INPUT / 131072 )) \
         < $Z_INPUT 1<> $D_ROOT 2> /dev/null
 
-B=$((10#${Z_INPUT:2:3}))
-F=etc/fstab
-for N in root/versions/pristine/$B/$F root/versions/run/$B/$F; do
-    if [[ -e $N ]]; then
-        echo "/dev/mmcblk0p3 /mnt/p3 ext4 noauto 0 0" >> $N
-        echo "/dev/mmcblk0p4 /mnt/p4 ext4 noauto 0 0" >> $N
-    fi
-done
-
 echo "$(basename $0): add to boot"
 
 # add android build to boot filesystem
@@ -202,6 +193,15 @@ sudo resize2fs $D_ROOT
 mkdir -p root/android
 # check if we have android data tar ball
 [ -r imgs/userdata.tar.bz2 ] && echo "add android user data!" && tar -xvjf imgs/userdata.tar.bz2 --strip 1 -C root/android
+
+B=$((10#${Z_INPUT:2:3}))
+F=etc/fstab
+N=root/versions/pristine/$B/$F
+if [[ -e $N ]]; then
+    echo "/dev/mmcblk0p3 /mnt/p3 ext4 noauto 0 0" >> $N
+    echo "/dev/mmcblk0p4 /mnt/p4 ext4 noauto 0 0" >> $N
+fi
+
 sudo umount $D_ROOT
 sudo rm -rf root
 
