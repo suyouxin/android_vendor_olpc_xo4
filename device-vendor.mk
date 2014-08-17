@@ -57,18 +57,11 @@ PRODUCT_COPY_FILES += \
 
 # GPU: for new driver version
 PRODUCT_PACKAGES += \
-    libgcu \
-    libveu \
-    libGLESv2SC \
+    libGLESv1_CM_MRVL \
     libGLESv2_MRVL \
     libEGL_MRVL \
-    libGLESv1_CM_MRVL \
-    libGAL
-
-PRODUCT_PACKAGES += \
-    libgputex \
-    libgpucsc \
-    libceu \
+    libGLESv2 \
+    libGLESv2SC \
     gfx.cfg
 
 # special binaries
@@ -81,8 +74,8 @@ PRODUCT_PACKAGES += \
 # system property sets
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=5m \
-    dalvik.vm.heapgrowthlimit=32m \
-    dalvik.vm.heapsize=96m \
+    dalvik.vm.heapgrowthlimit=48m \
+    dalvik.vm.heapsize=128m \
     ro.sf.lcd_density=200 \
     ro.phone.enabled=false \
 	ro.carrier=wifi-only \
@@ -199,6 +192,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librecovery_ui_xo4
 
+$(call inherit-product-if-exists, vendor/marvell/generic/gpu-engine/gpuengine_modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/ipplib/ipplib_modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/phycontmem-lib/modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw.mk)
