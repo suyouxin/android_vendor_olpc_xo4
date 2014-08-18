@@ -3,6 +3,8 @@ set -e
 
 out_folder="out/target/product/xo4"
 
+userdata=../../../../$out_folder/userdata.tar.bz2
+
 # undo existing loop devices we made
 loop_release() {
     for file in loop.*; do
@@ -77,7 +79,7 @@ sudo mount $L2 root
 sudo resize2fs $L2
 mkdir -p root/android
 # check if we have android data tar ball
-[ -r imgs/userdata.tar.bz2 ] && echo "add android user data!" && tar -xvjf imgs/userdata.tar.bz2 --strip 1 -C root/android
+[ -r $userdata ] && echo "add android user data!" && tar -xvjf $userdata --strip 1 -C root/android
 sudo umount $L2
 sudo rm -rf root
 
