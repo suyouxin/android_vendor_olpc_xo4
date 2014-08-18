@@ -99,6 +99,11 @@ on boot
     exec /sbin/busybox setkeycodes 68 104
     exec /sbin/busybox setkeycodes 69 187
 
+    # set opengles version as 0x20000
+    # opengles major version = (version & 0xffff0000)>>16
+    # opengles minor version = version & 0xffff
+    setprop ro.opengles.version 131072
+
 # unfreeze DCON
 on property:service.bootanim.exit=0
     write /sys/devices/platform/dcon/freeze 0
