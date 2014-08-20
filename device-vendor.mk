@@ -92,6 +92,10 @@ PRODUCT_COPY_FILES += \
     vendor/olpc/xo4/olpc-filesystem-resize.sh:root/sbin/olpc-filesystem-resize.sh \
     vendor/olpc/xo4/olpc-partition-resize.sh:root/sbin/olpc-partition-resize.sh
 
+# set default keyboard layout to OLPC_Spanish
+PRODUCT_COPY_FILES += \
+    vendor/olpc/xo4/input-manager-state.xml:/data/system/input-manager-state.xml
+
 # wifi
 # PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=mlan0 \
