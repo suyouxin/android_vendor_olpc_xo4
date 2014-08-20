@@ -82,7 +82,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.fuse_sdcard=true \
     ro.product.board=xo4 \
     persist.sys.mrvl_wl_recovery=0 \
-    persist.service.camera.cnt=1
+    persist.service.camera.cnt=1 \
+    persist.sys.country=US \
+    persist.sys.language=es \
+    persist.sys.timezone=America/Montevideo
 
 # file system resize
 PRODUCT_COPY_FILES += \
