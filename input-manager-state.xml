@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<input-manager-state>
+    <input-devices>
+        <input-device descriptor="485d69228e24f5e46da1598745890b214130dbc4">
+            <keyboard-layout descriptor="com.android.inputdevices/com.android.inputdevices.InputDeviceReceiver/keyboard_layout_olpc_spanish" current="true" />
+        </input-device>
+    </input-devices>
+</input-manager-state>
