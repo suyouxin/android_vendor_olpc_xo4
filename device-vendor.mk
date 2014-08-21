@@ -16,8 +16,8 @@
 
 # boot animation
 PRODUCT_COPY_FILES += \
-	vendor/olpc/xo4/initlogo.rle:root/initlogo.rle  \
     vendor/olpc/xo4/bootanimation.zip:system/media/bootanimation.zip
+# vendor/olpc/xo4/initlogo.rle:root/initlogo.rle  \
 
 PRODUCT_COPY_FILES += \
 	vendor/olpc/xo4/init.xo4.rc:root/init.xo4.rc \
