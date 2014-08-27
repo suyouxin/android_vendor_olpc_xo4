@@ -51,10 +51,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
-# touch screen configure file
-PRODUCT_COPY_FILES += \
-	vendor/olpc/xo4/zForce_touchscreen.idc:system/usr/idc/zForce_touchscreen.idc 
-
 # GPU: for new driver version
 PRODUCT_PACKAGES += \
     libGLESv1_CM_MRVL \
@@ -206,6 +202,7 @@ $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw
 $(call inherit-product-if-exists, vendor/olpc/xo4/gapps/gapps.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/uruguay/uruguay.mk)
 $(call inherit-product-if-exists, vendor/olpc/xo4/keyboard/keyboard.mk)
+$(call inherit-product-if-exists, vendor/olpc/xo4/touch/touch.mk)
 
 # $(call inherit-product-if-exists, vendor/olpc/xo4/etc/etc.mk)
 # $(call inherit-product-if-exists, vendor/marvell/generic/cpufreqd/cpufreq_modules.mk)
