@@ -39,7 +39,7 @@ fi
 Z_INPUT=32014o4.zd # sugar install
 I_INPUT=32014o4.img # sugar image
 
-Z_OUTPUT=32014a4.zd
+Z_OUTPUT=imgs/32014a4.zd
 
 S_DEVICE=3775 # size of device in megabytes (XO-4 eMMC 4 GB)
 S_SYSTEM=400 # size of system partition in megabytes
