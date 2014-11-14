@@ -16,8 +16,8 @@
 
 # boot animation
 PRODUCT_COPY_FILES += \
-    vendor/olpc/xo4/bootanimation.zip:system/media/bootanimation.zip
-# vendor/olpc/xo4/initlogo.rle:root/initlogo.rle  \
+    vendor/olpc/xo4/initlogo.rle:root/initlogo.rle \
+    vendor/olpc/xo4/bootanimation.zip:system/media/bootanimation.zip \
 
 PRODUCT_COPY_FILES += \
 	vendor/olpc/xo4/init.xo4.rc:root/init.xo4.rc \
@@ -35,9 +35,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml	\
     frameworks/native/data/etc/android.hardware.location.xml:system/etc/permissions/android.hardware.location.xml	\
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml	\
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml	\
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml	\
@@ -45,8 +42,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml	\
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
-#   frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
+
+# frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+# frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+# frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
@@ -80,8 +81,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.mrvl_wl_recovery=0 \
     persist.service.camera.cnt=1 \
     persist.sys.country=US \
-    persist.sys.language=es \
-    persist.sys.timezone=America/Montevideo
+    persist.sys.language=en \
+    persist.sys.timezone=Pacific/Auckland
 
 # file system resize
 PRODUCT_COPY_FILES += \
@@ -126,7 +127,7 @@ PRODUCT_PACKAGES += \
     power.xo4 
 
 # camera HAL
-PRODUCT_PACKAGES += \
+# PRODUCT_PACKAGES += \
     camera.xo4 \
     libion_mmp \
     libjpeg \
@@ -163,8 +164,11 @@ PRODUCT_PACKAGES += \
 	rfcomm \
 	avinfo \
 
-# Morphoss special 
 PRODUCT_PACKAGES += \
+	AnTuTu
+
+# Morphoss special 
+# PRODUCT_PACKAGES += \
     Terminal \
     libjackpal-androidterm4 \
     AdobeAir \
@@ -195,7 +199,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librecovery_ui_xo4
 
-$(call inherit-product-if-exists, vendor/marvell/generic/gpu-engine/gpuengine_modules.mk)
+#$(call inherit-product-if-exists, vendor/marvell/generic/gpu-engine/gpuengine_modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/ipplib/ipplib_modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/phycontmem-lib/modules.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw.mk)

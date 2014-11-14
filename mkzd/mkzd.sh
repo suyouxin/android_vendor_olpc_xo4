@@ -26,8 +26,8 @@ sudo parted $IMAGE <<EOF
 mklabel msdos
 mkpart primary ext2 1048576B 22020095B
 mkpart primary ext4 759169024B 3892314111B
-mkpart primary ext4 23068672B 442499071B
-mkpart primary ext4 455081984B 758120447B
+mkpart primary ext4 23068672B 547356672B
+mkpart primary ext4 548405248B 758120447B
 quit
 EOF
 
