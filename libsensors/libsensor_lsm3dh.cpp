@@ -41,6 +41,12 @@ static struct sensor_t sSensorList[MAX_NUM_SENSORS] = {
           GRAVITY_EARTH * 4.0f / 4000.0f, 
           0.25f, 
           1,
+		  0,
+		  8,
+          SENSOR_STRING_TYPE_ACCELEROMETER,
+		  "",
+		  100,
+		  SENSOR_FLAG_CONTINUOUS_MODE,
           { } 
       },
 };
