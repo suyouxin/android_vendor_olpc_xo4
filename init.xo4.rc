@@ -104,6 +104,11 @@ on boot
     # opengles minor version = version & 0xffff
     setprop ro.opengles.version 131072
 
+# for KSM
+	write /sys/kernel/mm/ksm/pages_to_scan 100
+	write /sys/kernel/mm/ksm/sleep_millisecs 500
+	write /sys/kernel/mm/ksm/run 1
+
 # unfreeze DCON
 on property:service.bootanim.exit=0
     write /sys/devices/platform/dcon/freeze 0
