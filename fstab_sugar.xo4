@@ -18,3 +18,6 @@
 /devices/d4208000.usb/usb1/1-1/1-1.2/1-1.2:1.0  /storage/udisk2  vfat    defaults                                      voldmanaged=udisk2:auto,noemulatedsd
 /devices/sd.0/d4280000.sdhci/mmc_host/mmc2 /storage/sdcard1  vfat    defaults                                 voldmanaged=sdcard1:auto,noemulatedsd
 
+# zram 512M
+/dev/block/zram0          none               swap    defaults    zramsize=536870912
+

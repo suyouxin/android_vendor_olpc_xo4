@@ -61,6 +61,7 @@ on early-fs
     exec /sbin/busybox sh /sbin/olpc-filesystem-resize.sh
 
     mount_all ./fstab.xo4
+	swapon_all /fstab.xo4
 
 on fs
     setprop ro.crypto.fuse_sdcard true
@@ -108,6 +109,9 @@ on boot
 	write /sys/kernel/mm/ksm/pages_to_scan 100
 	write /sys/kernel/mm/ksm/sleep_millisecs 500
 	write /sys/kernel/mm/ksm/run 1
+
+#for zram
+	write /proc/sys/vm/page-cluster 0
 
 # unfreeze DCON
 on property:service.bootanim.exit=0
