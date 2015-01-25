@@ -4,6 +4,14 @@
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
+# for KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
+#for zram
+    write /proc/sys/vm/page-cluster 0
+
 on init
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/sugar 0700 root root
@@ -104,14 +112,6 @@ on boot
     # opengles major version = (version & 0xffff0000)>>16
     # opengles minor version = version & 0xffff
     setprop ro.opengles.version 131072
-
-# for KSM
-	write /sys/kernel/mm/ksm/pages_to_scan 100
-	write /sys/kernel/mm/ksm/sleep_millisecs 500
-	write /sys/kernel/mm/ksm/run 1
-
-#for zram
-	write /proc/sys/vm/page-cluster 0
 
 # unfreeze DCON
 on property:service.bootanim.exit=0
