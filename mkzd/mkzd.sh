@@ -25,9 +25,9 @@ dd if=/dev/zero of=$IMAGE bs=1024 count=0 seek=$SIZE >/dev/null 2>/dev/null
 sudo parted $IMAGE <<EOF
 mklabel msdos
 mkpart primary ext2 1048576B 22020095B
-mkpart primary ext4 759169024B 3892314111B
-mkpart primary ext4 23068672B 547356672B
-mkpart primary ext4 548405248B 758120447B
+mkpart primary ext4 1051721728B 3892314111B
+mkpart primary ext4 23068672B 838860800B
+mkpart primary ext4 839909376B 1050673152B
 quit
 EOF
 
